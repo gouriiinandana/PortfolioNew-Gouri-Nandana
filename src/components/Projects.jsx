@@ -1,49 +1,49 @@
 import React from 'react';
-import { Lock, Cloud, ShieldCheck, Globe, Activity, Wifi } from 'lucide-react';
 import './Projects.css';
+import { Wifi, Activity, Lock, Cloud, ShieldCheck, Globe } from 'lucide-react';
 
 const projects = [
     {
         title: "OpenWRT Integrated Raspberry Pi Router",
         category: "Network Security",
-        icon: <Wifi size={20} />,
         desc: "Designed and deployed a custom router using OpenWRT on Raspberry Pi. Implemented VPN, firewall rules for traffic control and network stability.",
-        tech: ["Raspberry Pi", "OpenWRT", "Python"]
+        tech: ["Raspberry Pi", "OpenWRT", "Python"],
+        icon: Wifi
     },
     {
         title: "Swift Help (Hospital Management)",
         category: "Full Stack Development",
-        icon: <Activity size={20} />,
         desc: "Built a blood bank platform to streamline donor-recipient interactions. Integrated real-time inventory monitoring and automated replenishment.",
-        tech: ["React", "ExpressJS", "NodeJS", "MongoDB"]
+        tech: ["React", "ExpressJS", "NodeJS", "MongoDB"],
+        icon: Activity
     },
     {
         title: "Secure Cloud Storage (Hybrid Crypto)",
         category: "Cloud Security",
-        icon: <Lock size={20} />,
         desc: "Architected a secure cloud storage solution using hybrid cryptography. Integrated dynamic key rotation and multi-layered encryption.",
-        tech: ["Cryptography", "Cloud", "Security"]
+        tech: ["Cryptography", "Cloud", "Security"],
+        icon: Lock
     },
     {
         title: "AWS Cloud Monitoring & Security",
         category: "Cloud Security",
-        icon: <Cloud size={20} />,
         desc: "Implemented log monitoring and alerts using CloudWatch & CloudTrail and reviewed IAM permissions and access control.",
-        tech: ["AWS", "CloudWatch", "IAM"]
+        tech: ["AWS", "CloudWatch", "IAM"],
+        icon: Cloud
     },
     {
         title: "Mobile Application VAPT",
         category: "VAPT",
-        icon: <ShieldCheck size={20} />,
         desc: "Conducted static and dynamic analysis of Android APKs. Reviewed permissions, hardcoded secrets, and insecure storage.",
-        tech: ["APKTool", "MobSF", "Android"]
+        tech: ["APKTool", "MobSF", "Android"],
+        icon: ShieldCheck
     },
     {
         title: "Web Application VAPT",
         category: "VAPT",
-        icon: <Globe size={20} />,
         desc: "Identified vulnerabilities based on OWASP Top 10. Provided exploitation proof-of-concepts and mitigation steps.",
-        tech: ["Burp Suite", "OWASP ZAP", "Web Security"]
+        tech: ["Burp Suite", "OWASP ZAP", "Web Security"],
+        icon: Globe
     }
 ];
 
@@ -51,19 +51,21 @@ const Projects = () => {
     return (
         <section id="projects" className="section">
             <div className="container">
-                <h2 className="section-title">Projects</h2>
+                <h2 className="section-title">PROJECTS</h2>
                 <div className="projects-grid">
                     {projects.map((project, index) => (
                         <div key={index} className="project-card">
                             <div className="project-header">
-                                <div className="project-icon">{project.icon}</div>
-                                <span className="project-category">{project.category}</span>
+                                <project.icon className="project-icon" size={24} />
+                                <span className="project-category-badge">{project.category}</span>
                             </div>
-                            <h3>{project.title}</h3>
-                            <p>{project.desc}</p>
-                            <div className="project-tech">
-                                {project.tech.map((t, i) => (
-                                    <span key={i}>{t}</span>
+
+                            <h3 className="project-title">{project.title}</h3>
+                            <p className="project-desc">{project.desc}</p>
+
+                            <div className="project-tech-tags">
+                                {project.tech.map((tag, idx) => (
+                                    <span key={idx} className="tech-tag">{tag}</span>
                                 ))}
                             </div>
                         </div>

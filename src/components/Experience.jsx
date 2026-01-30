@@ -1,6 +1,7 @@
 import React from 'react';
-import { Briefcase, Calendar, Building, MapPin } from 'lucide-react';
 import './Experience.css';
+import { Building, MapPin, Calendar, Briefcase } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const experiences = [
     {
@@ -8,7 +9,7 @@ const experiences = [
         company: "GKS Infotech Pvt Ltd",
         location: "Kochi, India",
         period: "May 2025 – Present",
-        current: true,
+        isCurrent: true,
         desc: [
             "Conduct vulnerability assessment and penetration testing (VAPT) on web and mobile applications (APK & IPA)",
             "Identify, validate, and document security vulnerabilities with remediation guidance",
@@ -22,6 +23,7 @@ const experiences = [
         company: "Cyber Cell Police Station",
         location: "Kochi, Kerala",
         period: "Internship",
+        isCurrent: false,
         desc: [
             "Worked on secure file storage using hybrid cryptography",
             "Assisted in security analysis and documentation",
@@ -33,6 +35,7 @@ const experiences = [
         company: "JIITAK Inc.",
         location: "Kochi, Kerala",
         period: "Internship",
+        isCurrent: false,
         desc: [
             "Coordinated app development projects between Japanese and Indian teams",
             "Tracked requirements, tasks, and quality checks",
@@ -45,43 +48,50 @@ const Experience = () => {
     return (
         <section id="experience" className="section">
             <div className="container">
-                <h2 className="section-title">Experience</h2>
-                <div className="timeline">
+                <h2 className="section-title">EXPERIENCE</h2>
+                <div className="experience-timeline">
                     {experiences.map((exp, index) => (
-                        <div key={index} className={`timeline-item ${exp.current ? 'current' : ''}`}>
-                            <div className="timeline-marker"></div>
-                            <div className="timeline-content">
-                                <div className="exp-header">
-                                    <h3>{exp.title}</h3>
+                        <motion.div
+                            key={index}
+                            className="experience-card-container"
+                            initial={{ opacity: 0, y: 50 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, amount: 0.3 }}
+                            transition={{ duration: 0.5, delay: index * 0.2 }}
+                        >
+                            <div className="timeline-marker">
+                                <div className={`timeline-dot ${exp.isCurrent ? 'current' : ''}`}></div>
+                                {index !== experiences.length - 1 && <div className="timeline-line"></div>}
+                            </div>
 
-                                    <div className="exp-meta">
-                                        <div className="meta-row">
-                                            <Building size={16} className="meta-icon" />
-                                            <span className="company">{exp.company}</span>
-                                        </div>
+                            <div className="experience-card">
+                                <h3 className="exp-role">{exp.title}</h3>
 
-                                        {exp.location && (
-                                            <div className="meta-row">
-                                                <MapPin size={16} className="meta-icon" />
-                                                <span className="location">{exp.location}</span>
-                                            </div>
-                                        )}
-
-                                        <div className="meta-row">
-                                            <Calendar size={16} className="meta-icon" />
-                                            <span className="period">{exp.period}</span>
-                                            {exp.current && <span className="badge-current">Current</span>}
-                                        </div>
+                                <div className="exp-meta">
+                                    <div className="exp-company-row">
+                                        <Building size={16} className="exp-icon" />
+                                        <span className="exp-company">{exp.company}</span>
                                     </div>
-
+                                    <div className="exp-location-row">
+                                        <MapPin size={16} className="exp-icon" />
+                                        <span>{exp.location}</span>
+                                    </div>
+                                    <div className="exp-date-row">
+                                        <Calendar size={16} className="exp-icon" />
+                                        <span>{exp.period}</span>
+                                        {exp.isCurrent && <span className="current-badge">Current</span>}
+                                    </div>
                                 </div>
-                                <ul className="exp-list">
-                                    {exp.desc.map((item, i) => (
-                                        <li key={i}>{item}</li>
+
+                                <div className="exp-divider"></div>
+
+                                <ul className="exp-details-list">
+                                    {exp.desc.map((item, idx) => (
+                                        <li key={idx}>{item}</li>
                                     ))}
                                 </ul>
                             </div>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
             </div>

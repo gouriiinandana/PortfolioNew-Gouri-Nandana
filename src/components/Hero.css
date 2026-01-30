@@ -1,169 +1,154 @@
 .hero {
-    min-height: 100vh;
+    position: relative;
+    height: 100vh;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
-    padding: 100px 0;
+    background-color: #000;
     overflow: hidden;
-    /* Static vivid glow background */
-    background: radial-gradient(circle at 50% 40%, rgba(0, 243, 255, 0.15) 0%, rgba(0, 255, 157, 0.05) 30%, rgba(5, 5, 16, 0) 70%),
-        var(--bg-color);
+}
+
+.hero-bg-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    /* z-index removed to prevent trapping children in low stacking context */
+}
+
+.hero-bg-item {
+    flex: 1;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(100%) brightness(0.7) contrast(1.1);
+    transition: all 0.6s ease;
+    border-right: 1px solid rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 1;
+}
+
+.hero-bg-item:last-child {
+    border-right: none;
+}
+
+/* Hover Effect: When hovering a specific image slice, it shows color */
+.hero-bg-item:hover {
+    filter: none;
+    /* Show raw original colors */
+    flex: 1.5;
+    /* Slight expansion effect */
+    z-index: 20;
+    /* Bring above the overlay */
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, transparent 30%, #000 120%);
+    z-index: 2;
+    pointer-events: none;
 }
 
 .hero-container {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
+    pointer-events: none;
+    /* Let container be transparent to clicks */
+}
+
+.hero-content {
     text-align: center;
-    max-width: 900px;
-    z-index: 2;
+    position: relative;
+    z-index: 11;
+    width: 100%;
+    pointer-events: none;
+    /* Let clicks/hovers pass through to the images */
 }
 
-/* Badge */
-.hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 16px;
-    border: 1px solid rgba(0, 243, 255, 0.3);
-    border-radius: 30px;
-    color: var(--text-secondary);
-    font-family: var(--font-mono);
-    font-size: 0.9rem;
-    background: rgba(0, 243, 255, 0.05);
-    margin-bottom: 2rem;
-}
-
-.hero-badge .dot {
-    width: 6px;
-    height: 6px;
-    background-color: var(--secondary-color);
-    border-radius: 50%;
-    box-shadow: 0 0 8px var(--secondary-color);
-}
-
-/* Titles */
 .hero-title {
-    font-size: 4.5rem;
-    font-weight: 800;
-    margin-bottom: 1rem;
-    letter-spacing: -1px;
-    color: var(--text-primary);
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(2rem, 5vw, 5rem);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-family: var(--font-main);
+    mix-blend-mode: normal;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+    flex-wrap: wrap;
+    pointer-events: auto;
+    /* Re-enable pointer events for text interaction if needed, though mostly visual */
 }
 
-.text-highlight {
-    color: var(--secondary-color);
-    background: linear-gradient(120deg, #00f3ff, #00ff9d);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+/* Add the glow back to text if desired */
+.hero-title:hover {
+    text-shadow: 0 0 20px rgba(0, 243, 255, 0.5);
 }
 
-/* Roles */
-.hero-roles {
+.hero-subtitle {
     font-size: 1.5rem;
-    color: var(--primary-color);
-    margin-bottom: 1.5rem;
+    font-weight: 300;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0;
+    margin-top: 1rem;
+    font-family: var(--font-main);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+    pointer-events: auto;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 12;
+    pointer-events: auto;
+}
+
+.scroll-circle {
+    width: 60px;
+    height: 60px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
     display: flex;
-    gap: 10px;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
-    flex-wrap: wrap;
-}
-
-.hero-roles .divider {
-    color: var(--text-secondary);
-    opacity: 0.5;
-}
-
-.hero-roles .green-text {
-    color: var(--secondary-color);
-}
-
-.hero-roles .blue-text {
-    color: var(--primary-color);
-}
-
-/* Description */
-.hero-description {
-    font-size: 1.1rem;
-    color: var(--text-secondary);
-    max-width: 700px;
-    margin-bottom: 3rem;
-    line-height: 1.6;
-}
-
-/* Buttons */
-.hero-buttons {
-    display: flex;
-    gap: 1.5rem;
-    margin-bottom: 4rem;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.btn {
-    display: inline-flex;
     align-items: center;
-    gap: 0.8rem;
-    padding: 1rem 2rem;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 1rem;
-    text-transform: capitalize;
+    font-size: 0.6rem;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    animation: bounce 2s infinite;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
     transition: all 0.3s ease;
 }
 
-.btn-green {
-    background: var(--secondary-color);
-    color: #000;
-    font-weight: 700;
-    box-shadow: 0 0 15px rgba(0, 255, 157, 0.3);
-}
-
-.btn-green:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 0 25px rgba(0, 255, 157, 0.5);
-    background: #2affa5;
-}
-
-.btn-outline-cyan {
-    background: transparent;
-    border: 1px solid var(--primary-color);
-    color: var(--primary-color);
-}
-
-.btn-outline-cyan:hover {
-    background: rgba(0, 243, 255, 0.1);
-    box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
-    transform: translateY(-3px);
-}
-
-/* Scroll Indicator */
-.scroll-indicator {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--text-secondary);
-    font-size: 0.8rem;
-    font-family: var(--font-mono);
-    position: absolute;
-    bottom: 2rem;
-    opacity: 0.7;
-    transition: opacity 0.3s;
-}
-
-.scroll-indicator:hover {
-    opacity: 1;
-    color: var(--primary-color);
-}
-
-.shield-icon {
-    width: 30px;
-    height: 30px;
-    color: var(--primary-color);
-    animation: bounce 2s infinite;
+.scroll-circle:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #fff;
 }
 
 @keyframes bounce {
@@ -177,30 +162,25 @@
     }
 
     40% {
-        transform: translateY(-10px);
+        transform: translateY(-5px);
     }
 
     60% {
-        transform: translateY(-5px);
+        transform: translateY(-3px);
     }
 }
 
 @media (max-width: 768px) {
+    .hero-bg-container {
+        flex-direction: column;
+    }
+
+    .hero-bg-item {
+        border-right: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+    }
+
     .hero-title {
         font-size: 3rem;
-    }
-
-    .hero-roles {
-        font-size: 1.1rem;
-    }
-
-    .hero-buttons {
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .btn {
-        width: 100%;
-        justify-content: center;
     }
 }

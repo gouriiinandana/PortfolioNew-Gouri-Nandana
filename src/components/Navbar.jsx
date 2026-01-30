@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Shield } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -8,27 +8,27 @@ const Navbar = () => {
 
     useEffect(() => {
         const handleScroll = () => {
-            setScrolled(window.scrollY > 50);
+            setScrolled(window.scrollY > 20);
         };
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
     const navLinks = [
-        { name: 'Home', href: '#home' },
-        { name: 'About', href: '#about' },
-        { name: 'Skills', href: '#skills' },
-        { name: 'Experience', href: '#experience' },
-        { name: 'Projects', href: '#projects' },
-        { name: 'Contact', href: '#contact' },
+        { name: 'about', href: '#about' },
+        { name: 'skills', href: '#skills' },
+        { name: 'experience', href: '#experience' },
+        { name: 'projects', href: '#projects' },
+        { name: 'education', href: '#education' },
+        { name: 'certifications', href: '#certifications' },
+        { name: 'contact', href: '#contact' },
     ];
 
     return (
         <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
             <div className="container navbar-container">
                 <a href="#home" className="logo">
-                    <Shield className="logo-icon" size={24} />
-                    <span className="logo-text">GN<span className="highlight">.SEC</span></span>
+                    GN.SEC
                 </a>
 
                 <div className={`nav-links ${isOpen ? 'active' : ''}`}>
@@ -52,3 +52,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+

@@ -1,0 +1,89 @@
+.education-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+    justify-content: center;
+}
+
+.education-card {
+    background: rgba(10, 10, 10, 1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.4s ease;
+    cursor: default;
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* Hover Effect */
+.education-card:hover {
+    border-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    transform: translateY(-5px);
+}
+
+.edu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.edu-icon {
+    color: var(--accent-blue);
+    transition: all 0.3s ease;
+}
+
+.education-card:hover .edu-icon {
+    filter: drop-shadow(0 0 8px rgba(0, 243, 255, 0.6));
+}
+
+.edu-year {
+    font-family: var(--font-mono);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+}
+
+.edu-degree {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+
+.edu-spec {
+    color: var(--accent-green);
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.edu-uni-row {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.uni-icon {
+    color: var(--text-secondary);
+}
+
+.edu-uni {
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+.education-card:hover .edu-uni,
+.education-card:hover .uni-icon {
+    color: rgba(255, 255, 255, 0.9);
+}
