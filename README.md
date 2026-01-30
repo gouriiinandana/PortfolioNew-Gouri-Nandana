@@ -1,10 +1,7 @@
 # Gouri Nandana - Security Engineer Portfolio 🛡️
 A modern, responsive, and cyber-themed portfolio website built to showcase my journey as a **Security Engineer** and **Cloud Security Consultant**. This project highlights my skills, experience, certifications, and projects in the cybersecurity domain.
 
-https://gouri-nandana-portfolio.vercel.app/
 
-
-<img width="1348" height="606" alt="image" src="https://github.com/user-attachments/assets/ca975b48-ca54-4863-8da3-54420f96da32" />
 
 ## 🚀 Features
 -   **Cyber Aesthetic**: deeply integrated dark mode with neon cyan/green accents, glassmorphism, and "hacker-style" visuals.
