@@ -1,4 +1,4 @@
-# Gouri Nandana - Security Engineer Portfolio 🛡️
+# Gouri Nandana - Security Engineer Portfolio 
 A modern, responsive, and cyber-themed portfolio website built to showcase my journey as a **Security Engineer** and **Cloud Security Consultant**. This project highlights my skills, experience, certifications, and projects in the cybersecurity domain.
 
 https://portfolio-new-gouri-nandana.vercel.app/
@@ -27,8 +27,8 @@ src/
 ## 🔧 Getting Started
 1.  **Clone the repository**
     ```bash
-    git clone https://github.com/gouriiinandana/Gouri-Nandana-Portfolio.git
-    cd Gouri-Nandana-Portfolio
+    git clone https://github.com/gouriiinandana/PortfolioNew-Gouri-Nandana.git
+    cd PortfolioNew-Gouri-Nandana
     ```
 2.  **Install Dependencies**
     ```bash
