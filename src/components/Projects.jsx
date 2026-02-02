@@ -1,6 +1,6 @@
 import React from 'react';
 import './Projects.css';
-import { Wifi, Activity, Lock, Cloud, ShieldCheck, Globe } from 'lucide-react';
+import { Wifi, Activity, Lock, Cloud, ShieldCheck, Globe, Github } from 'lucide-react';
 
 const projects = [
     {
@@ -8,7 +8,8 @@ const projects = [
         category: "Network Security",
         desc: "Designed and deployed a custom router using OpenWRT on Raspberry Pi. Implemented VPN, firewall rules for traffic control and network stability.",
         tech: ["Raspberry Pi", "OpenWRT", "Python"],
-        icon: Wifi
+        icon: Wifi,
+        githubUrl: "https://github.com/EDBOZY/OpenWRT-RaspberryPi-VPN-Router.git"
     },
     {
         title: "Swift Help (Hospital Management)",
@@ -68,6 +69,19 @@ const Projects = () => {
                                     <span key={idx} className="tech-tag">{tag}</span>
                                 ))}
                             </div>
+
+                            {project.githubUrl && (
+                                <a
+                                    href={project.githubUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="github-link"
+                                    aria-label="View on GitHub"
+                                >
+                                    <Github size={20} />
+                                    <span>View Repository</span>
+                                </a>
+                            )}
                         </div>
                     ))}
                 </div>

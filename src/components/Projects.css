@@ -92,6 +92,39 @@
     border-color: rgba(0, 243, 255, 0.4);
 }
 
+.github-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    padding: 0.6rem 1.2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.github-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent-green);
+    color: var(--accent-green);
+    transform: translateX(5px);
+    box-shadow: 0 0 15px rgba(0, 255, 157, 0.2);
+}
+
+.github-link svg {
+    transition: transform 0.3s ease;
+}
+
+.github-link:hover svg {
+    transform: rotate(360deg);
+}
+
 @media (max-width: 768px) {
     .projects-grid {
         grid-template-columns: 1fr;
