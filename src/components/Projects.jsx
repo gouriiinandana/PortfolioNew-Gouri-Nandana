@@ -23,7 +23,8 @@ const projects = [
         category: "Cloud Security",
         desc: "Architected a secure cloud storage solution using hybrid cryptography. Integrated dynamic key rotation and multi-layered encryption.",
         tech: ["Cryptography", "Cloud", "Security"],
-        icon: Lock
+        icon: Lock,
+        githubUrl: "https://github.com/gouriiinandana/Secure_File_Storage_using_Hybrid_Crptography.git"
     },
     {
         title: "AWS Cloud Monitoring & Security",
