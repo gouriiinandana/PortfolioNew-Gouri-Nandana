@@ -58,7 +58,20 @@ const Projects = () => {
                         <div key={index} className="project-card">
                             <div className="project-header">
                                 <project.icon className="project-icon" size={24} />
-                                <span className="project-category-badge">{project.category}</span>
+                                <div className="project-header-right">
+                                    <span className="project-category-badge">{project.category}</span>
+                                    {project.githubUrl && (
+                                        <a
+                                            href={project.githubUrl}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="github-icon-link"
+                                            aria-label="View on GitHub"
+                                        >
+                                            <Github size={20} />
+                                        </a>
+                                    )}
+                                </div>
                             </div>
 
                             <h3 className="project-title">{project.title}</h3>
@@ -69,19 +82,6 @@ const Projects = () => {
                                     <span key={idx} className="tech-tag">{tag}</span>
                                 ))}
                             </div>
-
-                            {project.githubUrl && (
-                                <a
-                                    href={project.githubUrl}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="github-link"
-                                    aria-label="View on GitHub"
-                                >
-                                    <Github size={20} />
-                                    <span>View Repository</span>
-                                </a>
-                            )}
                         </div>
                     ))}
                 </div>
